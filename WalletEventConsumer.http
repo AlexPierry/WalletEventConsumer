@@ -1,0 +1,6 @@
+@WalletEventConsumer_HostAddress = http://localhost:5089
+
+GET {{WalletEventConsumer_HostAddress}}/balances/ba06b272-2e62-43a2-aeac-ac88f7c0e600
+Accept: application/json
+
+###
