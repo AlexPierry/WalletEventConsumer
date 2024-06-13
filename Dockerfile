@@ -8,6 +8,7 @@ RUN dotnet restore
 
 # Copiar o restante do código e compilar a aplicação
 COPY . ./
+
 RUN dotnet publish -c Release -o out
 
 # Usar a imagem oficial do .NET runtime para rodar a aplicação

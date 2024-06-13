@@ -11,7 +11,7 @@
             "driver": "MySQL",
             "name": "wallet",
             "username": "root",
-            "database": "wallet_consumer"
+            "database": "mysql"
         }
     ]
 }

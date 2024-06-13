@@ -1,7 +1,6 @@
 using WalletEventConsumer.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Threading.Tasks;
 using System.Text.Json;
 
 namespace WalletEventConsumer.Controllers

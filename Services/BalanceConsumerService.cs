@@ -1,5 +1,4 @@
 using System.Text.Json;
-using System.Text.Json.Serialization;
 using Confluent.Kafka;
 using WalletEventConsumer.Data;
 using WalletEventConsumer.Model;
@@ -17,9 +16,11 @@ namespace WalletEventConsumer.Services
             var config = new ConsumerConfig
             {
                 GroupId = "wallet",
-                BootstrapServers = "kafka:9092",
+                BootstrapServers = Environment.GetEnvironmentVariable("Kafka__BootstrapServers"),
                 AutoOffsetReset = AutoOffsetReset.Earliest
             };
+
+            Console.WriteLine("Trying to connect to Kafka on: " + config.BootstrapServers);
 
             _consumer = new ConsumerBuilder<Ignore, string>(config).Build();
             _serviceProvider = serviceProvider;
