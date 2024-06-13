@@ -7,12 +7,15 @@ namespace WalletEventConsumer.Services
 {
     public class BalanceConsumerService : IHostedService
     {
+        private readonly IHostApplicationLifetime _applicationLifeTime;
         private readonly IConsumer<Ignore, string> _consumer;
         private readonly IServiceProvider _serviceProvider;
         private readonly string _topic = "balances";
 
-        public BalanceConsumerService(IServiceProvider serviceProvider)
+        public BalanceConsumerService(IServiceProvider serviceProvider, IHostApplicationLifetime appLifeTime)
         {
+            _applicationLifeTime = appLifeTime;
+
             var config = new ConsumerConfig
             {
                 GroupId = "wallet",
@@ -61,6 +64,7 @@ namespace WalletEventConsumer.Services
             catch (Exception ex)
             {
                 Console.WriteLine(ex);
+                _applicationLifeTime.StopApplication();
             }
         }
 
